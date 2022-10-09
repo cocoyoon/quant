@@ -1,0 +1,8 @@
+[package]
+name = "market"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cex = { version = "0.1.0", path = "../market/cex"}
+dex = { version = "0.1.0", path = "../market/dex"}
