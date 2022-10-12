@@ -27,10 +27,21 @@ impl BinanceClient {
         if let Some(params) = params {
             url = format!("{}{}", url, params); 
         }
-        println!("Requesting for -> {}", url);
-        let res = self.inner_client.get(url).send().await?;
+        let res = self.inner_client.get(url).send().await?.text().await?;
         println!("{:?}", res);
+        Ok(())
+    }
+}
 
+#[cfg(test)]
+mod tests{
+
+    use crate::binance::*;
+
+    #[tokio::test]
+    async fn get_market_data_works() -> color_eyre::Result<()> {
+        get_market_data().await?;
+        
         Ok(())
     }
 }

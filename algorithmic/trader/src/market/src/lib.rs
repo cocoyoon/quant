@@ -1,6 +1,8 @@
-
-use cex;
-use dex;
+pub use binance::{
+    BinanceClient, 
+    EndPoint,
+    binance::get_market_data,
+};
 
 pub enum Exchange {
     Cex(CexType),

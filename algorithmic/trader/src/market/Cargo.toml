@@ -4,5 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-cex = { version = "0.1.0", path = "../market/cex"}
-dex = { version = "0.1.0", path = "../market/dex"}
+utility = { version = "0.1.0", path = "../utility"}
+binance = { version = "0.1.0", path = "./cex/binance"}
+ftx = { version = "0.1.0", path = "./cex/ftx"}

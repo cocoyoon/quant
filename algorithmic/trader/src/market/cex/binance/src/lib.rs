@@ -1,11 +1,12 @@
-mod client;
-mod endpoint;
+pub mod client;
+pub mod endpoint;
 
 /// Binance Module 
 /// 1. Market Data
 /// 2. 
-use client::BinanceClient;
-use endpoint::{EndPoint, MarketData};
+pub use client::BinanceClient;
+pub use endpoint::{EndPoint, MarketData};
+pub use binance::*;
 
 pub mod binance {
 
@@ -16,20 +17,9 @@ pub mod binance {
         let base = String::from(EndPoint::Base);
         let end_point = String::from(EndPoint::MarketData(MarketData::ExhchangeInfo));
         let request_url = format!("{}{}", base, end_point.as_str());
+        println!("Requesting for -> {:?}", request_url);
         client.get(String::from(request_url), None).await?;
 
-        Ok(())
-    }
-}
-
-#[cfg(test)]
-mod tests{
-    use crate::binance::*;
-
-    #[tokio::test]
-    async fn get_market_data_works() -> color_eyre::Result<()> {
-        let res = get_market_data().await?;
-        assert_eq!((), res);
         Ok(())
     }
 }
